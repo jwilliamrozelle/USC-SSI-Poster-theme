@@ -1,0 +1,47 @@
+% USC Color Theme
+\ProvidesPackage{uscColor}
+
+% Required packages
+\RequirePackage{xcolor}
+
+% Color Definitions
+\definecolor{lightgray}{RGB}{245, 246, 250}
+\definecolor{wUSCcardinal}{HTML}{990000} % USC Cardinal
+\definecolor{wUSCgold}{HTML}{FFCC00} % USC Gold
+\definecolor{wGrey}{HTML}{767676} % Grey
+
+% Theme Color Setup
+\setbeamercolor{palette primary}{fg=black,bg=white}
+\setbeamercolor{palette secondary}{fg=black,bg=white}
+\setbeamercolor{palette tertiary}{bg=black,fg=white}
+\setbeamercolor{palette quaternary}{fg=black,bg=white}
+\setbeamercolor{structure}{fg=wGrey} % Might need to ensure this is 'fg=wUSCcardinal' for USC theme
+
+% Headline and footline colors
+\setbeamercolor{headfootline}{fg=lightgray,bg=wUSCcardinal}
+\setbeamercolor{headfootline accent}{bg=wUSCgold}
+
+% Block Colors
+\setbeamercolor{block title}{fg=wUSCcardinal,bg=white}
+\setbeamercolor{block separator}{bg=black}
+\setbeamercolor{block body}{fg=black,bg=white}
+
+% Alert Block Colors
+\setbeamercolor{block alerted title}{fg=wUSCcardinal,bg=lightgray} % Adjusted lightblue to lightgray for consistency
+\setbeamercolor{block alerted separator}{bg=black}
+\setbeamercolor{block alerted body}{fg=black,bg=lightgray}
+
+% Example Block Colors
+\setbeamercolor{block example title}{fg=wUSCcardinal,bg=lightgray}
+\setbeamercolor{block example separator}{bg=black}
+\setbeamercolor{block example body}{fg=black,bg=lightgray}
+
+% Itemize Color
+\setbeamercolor{item}{fg=wUSCcardinal}
+
+% Bibliography Colors (assuming default colors are desired; adjust if needed)
+\setbeamercolor{bibliography item}{fg=black}
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}

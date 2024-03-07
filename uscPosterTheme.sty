@@ -1,0 +1,273 @@
+\ProvidesPackage{uscPosterTheme}
+
+\RequirePackage{beamerposter} % Essential for poster creation
+\usepackage{fontspec} % Ensure you have the fonts installed or adjust to use system fonts
+\usepackage{ebgaramond-maths}
+\usepackage[T1]{fontenc}
+\usepackage{parskip}
+\RequirePackage{changepage}
+\usepackage{ragged2e}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+\usepackage{graphicx}
+\usepackage{setspace}
+
+%===================%
+% POSTER DIMENSIONS %
+%===================%
+% You may wish to update these manually
+\newlength{\posterwidth}
+\newlength{\posterheight}
+\setlength{\posterwidth}{91.44cm} % 36 inches
+\setlength{\posterheight}{60.96cm} % 24 inches
+
+% Border dimensions, should be calculated automatically - but you can play with them if you're not happy
+\newlength{\borderheight}
+\setlength{\borderheight}{\dimexpr 0.083\posterheight\relax} % should be about 2 inches for 24 inch height
+% Logo size
+\newlength{\noPadLogoHeight}
+\setlength{\noPadLogoHeight}{\dimexpr 0.5\borderheight\relax}
+% Log padding
+\newlength{\logoPadding}
+\setlength{\logoPadding}{\dimexpr 0.5\noPadLogoHeight\relax}
+% Extended logos (as in the sociology and SSI logos
+\newlength{\extendLogoHeight}
+\setlength{\extendLogoHeight}{\dimexpr 0.6\borderheight\relax}
+% padding adjustment
+\newlength{\extendLogoPadding}
+\setlength{\extendLogoPadding}{\dimexpr 0.4\noPadLogoHeight\relax}
+
+
+% Define colors
+\definecolor{uscPrimary}{RGB}{153,0,0} % USC Cardinal
+\definecolor{uscSecondary}{RGB}{255,204,0} % USC Gold
+
+% Redefine the headline template to include a red bar
+\setbeamertemplate{headline}{
+    \begin{beamercolorbox}[wd=\paperwidth,ht=\borderheight,dp=0pt,sep=0pt]{headfootline} % Adjust height (ht) as needed
+        \includegraphics[height=\borderheight,keepaspectratio]{images/uscLogos/PrimShield_Word_RegUse_Gold-Wh_RGB.png}
+        % Fill space between logo and text
+        \hfill
+        % Text on the right, vertically centered
+        \raisebox{\logoPadding}[0pt][0pt]{%
+            \parbox[top]{.3\textwidth}{%
+                \raggedleft
+                \garamondfont\large\color{fg}Ph.D. in Population, Health and Place%
+            }%
+        }
+        \hspace*{\logoPadding}
+
+
+        
+        
+    \end{beamercolorbox}
+    % Thin yellow line
+    \begin{beamercolorbox}[wd=\paperwidth,ht=0.05in,dp=0ex]{headfootline accent}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=\paperwidth,ht=0.05in,dp=0ex]{headfootline}
+    \end{beamercolorbox}
+}
+
+% Redefine the footline template similarly
+\setbeamertemplate{footline}{
+    % Footline top
+    \begin{beamercolorbox}[wd=\paperwidth,ht=0.05in,dp=0ex]{headfootline}
+    \end{beamercolorbox}
+    % Thin yellow line
+    \begin{beamercolorbox}[wd=\paperwidth,ht=0.05in,dp=0ex]{headfootline accent}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=\paperwidth,ht=\borderheight,dp=0]{headfootline} % Adjust height (ht) as needed and align content to the top
+        
+        \hspace*{\logoPadding}
+        \raisebox{\logoPadding}{
+            \includegraphics[height=\noPadLogoHeight, keepaspectratio]{images/uscLogos/F2L_KSOM_Gold-Wh_RGB_cropped.png}
+            }%
+        \hfill
+        % centered logo
+        \raisebox{\extendLogoPadding}{\includegraphics[height=\extendLogoHeight,keepaspectratio]{images/uscLogos/SSI-GoldAndWhite.png}}
+        \hfill
+        \raisebox{\extendLogoPadding}{\includegraphics[height=\extendLogoHeight, keepaspectratio]{images/uscLogos/SociologyLogo.png}}%
+        \hspace*{\logoPadding}
+    \end{beamercolorbox}    
+}
+
+
+% Define or adjust beamercolorbox color definitions for headline and footline
+\setbeamercolor{headline}{bg=wUSCcardinal,fg=white}
+\setbeamercolor{footline}{bg=wUSCcardinal,fg=white}
+
+% Color setup for Beamer blocks
+\setbeamercolor{structure}{fg=uscPrimary,bg=white}
+\setbeamercolor{block title}{fg=white,bg=uscPrimary}
+\setbeamercolor{block body}{fg=black,bg=uscSecondary!10}
+
+%%%%%%%%%%%%%%
+%  FONTS     %
+%%%%%%%%%%%%%%
+% Define a new font family for Garamond
+\newfontfamily{\garamondfont}{EB Garamond}[
+  Extension=.otf,
+  UprightFont=*-Regular,
+  BoldFont=*-SemiBold, % Garamond typically doesn't have a bold weight; SemiBold can be a substitute
+]
+
+% \setbeamerfont{headline}{family=\Times}
+\setbeamerfont{headline title}{size=\Huge,series=\bfseries}
+\setbeamerfont{headline author}{size=\large}
+\setbeamerfont{headline institute}{size=\normalsize}
+\setbeamerfont{block title}{size=\huge,series=\bfseries, family = \garamondfont}
+\setbeamerfont{block body}{size=\normalsize, family = \garamondfont}
+\setbeamerfont{heading}{family=\garamondfont,series=\bfseries}
+\setbeamerfont{caption}{size=\small}
+\setbeamerfont{footline}{family=\garamondfont,size=\normalsize}
+
+% ====================
+% Macros
+% ====================
+
+\newcommand{\samelineand}{\qquad}
+
+% ====================
+% Elements
+% ====================
+
+% List
+% \def\@listi{\leftmargin\leftmarginii
+% \topsep 1ex % spacing before
+% \parsep 0\p@ \@plus\p@
+% \itemsep 0.5ex} % spacing between
+
+% Ensures that adjustments to internal commands are safe
+\makeatletter
+% Redefines list parameters for level-one lists
+\def\@listi{%
+  \leftmargin\leftmarginii % Sets left margin
+  \topsep 1ex % Sets spacing above the list
+  \parsep 0pt \@plus1pt % Sets spacing between paragraphs within a list item
+  \itemsep 0.5ex % Sets spacing between items
+}
+\makeatother
+
+% Itemize
+
+\setbeamertemplate{itemize item}{\raise0.5ex \hbox{\vrule width 0.5ex height 0.5ex}}
+\setbeamertemplate{itemize subitem}{\raise0.3ex \hbox{\vrule width 0.5ex height 0.5ex}}
+\setbeamertemplate{itemize subsubitem}{\raise0.2ex \hbox{\vrule width 0.5ex height 0.5ex}}
+
+% Enumerate
+
+\setbeamertemplate{enumerate item}{\insertenumlabel.}
+\setbeamertemplate{enumerate subitem}{\insertsubenumlabel.}
+\setbeamertemplate{enumerate subsubitem}{\insertsubsubenumlabel.}
+
+% Equation
+\setlength\belowdisplayshortskip{2ex}
+
+% Caption
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}[period]
+\setlength{\abovecaptionskip}{2ex}
+\setlength{\belowcaptionskip}{1ex}
+
+% Bibliography
+\setbeamertemplate{bibliography item}[text]
+
+% Navigation
+\beamertemplatenavigationsymbolsempty
+
+%===================
+% Components
+%===================
+
+% Block
+\setbeamertemplate{block begin}{
+    \begin{beamercolorbox}[colsep*=0ex,dp=2ex,center]{block title}
+        \usebeamerfont{block title}\insertblocktitle
+        \vskip-1.5ex
+        \begin{beamercolorbox}[colsep=0.025ex]{block separator}\end{beamercolorbox}
+    \end{beamercolorbox}
+
+    {\parskip0pt\par}
+    \usebeamerfont{block body}
+    \vskip-0.5ex
+    \begin{beamercolorbox}[colsep*=0ex]{block body}
+        \justifying
+        \setlength{\parskip}{1ex}
+        \vskip-2ex
+    \end{beamercolorbox}
+}
+\setbeamertemplate{block end}{
+    \vskip0pt
+    \vspace*{5ex}
+}
+
+
+
+
+% Alert Block
+\setbeamertemplate{block alerted begin}
+{
+  \begin{beamercolorbox}[colsep*=0ex,dp=2ex,center]{block alerted title}
+    \vskip0pt
+    \usebeamerfont{block title}\insertblocktitle
+    \vskip-1.25ex
+    \begin{beamercolorbox}[colsep=0.025ex]{block alerted separator}\end{beamercolorbox}
+  \end{beamercolorbox}
+  {\parskip0pt\par}
+  \usebeamerfont{block body}
+  \vskip-0.5ex
+  \begin{beamercolorbox}[colsep*=0ex]{block alerted body}
+  \justifying
+  \begin{adjustwidth}{1ex}{1ex}
+  \setlength{\parskip}{1ex}
+  \vskip-2ex
+  \end{adjustwidth}
+  \end{beamercolorbox}
+}
+\setbeamertemplate{block alerted end}
+{
+  
+  \vskip1ex
+  
+  \vskip0pt
+  \vspace*{2ex}
+}
+
+% Example Block
+\setbeamertemplate{block example begin}
+{
+  \begin{beamercolorbox}[colsep*=0ex,dp=2ex,center]{block example title}
+    \vskip0pt
+    \usebeamerfont{block title}\insertblocktitle
+    \vskip-1.25ex
+    \begin{beamercolorbox}[colsep=0.025ex]{block example separator}\end{beamercolorbox}
+  \end{beamercolorbox}
+  {\parskip0pt\par}
+  \usebeamerfont{block body}
+  \vskip-0.5ex
+  \begin{beamercolorbox}[colsep*=0ex]{block example body}
+  \justifying
+  \begin{adjustwidth}{1ex}{1ex}
+  \setlength{\parskip}{1ex}
+  \vskip-2ex
+}
+\setbeamertemplate{block example end}{
+  \end{adjustwidth}
+  \vskip1ex
+  \end{beamercolorbox}
+  \vskip0pt
+  \vspace*{2ex}
+}
+
+
+
+
+
+
+
+
+
+
